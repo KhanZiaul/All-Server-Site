@@ -28,6 +28,8 @@ async function run() {
 
         const serviceCollections = client.db("cardocDB").collection("cardocs");
 
+        const checkoutCollections = client.db("cardocDB").collection("checkout");
+
         app.get('/services', async (req, res) => {
             const cursor = serviceCollections.find()
             const result = await cursor.toArray()
@@ -41,6 +43,12 @@ async function run() {
                 projection: { title: 1, img: 1 ,price : 1},
             };
             const result = await serviceCollections.findOne(query, options);
+            res.send(result)
+        })
+
+        app.post('/checkout', async(req,res) => {
+            const singleCheckout = req.body;
+            const result = await checkoutCollections.insertOne(singleCheckout);
             res.send(result)
         })
 
