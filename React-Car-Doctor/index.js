@@ -40,7 +40,7 @@ async function run() {
             const id = req.params.id
             const query = { _id: new ObjectId(id) }
             const options = {
-                projection: { title: 1, img: 1 ,price : 1},
+                projection: { title: 1, img: 1 ,price : 1 , date : 1},
             };
             const result = await serviceCollections.findOne(query, options);
             res.send(result)
@@ -61,6 +61,25 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+
+        app.get('/checkout', async(req,res) => {
+            const cursor = checkoutCollections.find()
+            const result = await cursor.toArray()
+            res.send(result)
+        })
+
+        app.get('/checkout/:id', async(req,res) => {
+            const id = req.params.id;
+            const query = { _id : new ObjectId(id)}
+            const result = await checkoutCollections.findOne(query);
+            res.send(result)
+        })
+
+
+        app.delete('/checkout/:id', async(req,res) => {
+            const id = req.params.id;
+        })
+
 
 
         await client.db("admin").command({ ping: 1 });
