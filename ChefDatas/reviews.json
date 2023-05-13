@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Uday Kapoor",
+        "rating": 4.9,
+        "review": "These Chicken Tikka Masalaare really spicy and delicious! I love the flavor and the crispy skin. Would definitely order again.",
+        "image":"https://images.unsplash.com/photo-1569128782402-d1ec3d0c1b1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80",
+        "id":1
+    },
+    {
+        "name": "Puja Butt",
+        "rating": 4.4,
+        "review": "I'm a huge fan of spicy food and these Dal Makhani did not disappoint. They were cooked to perfection and had just the right amount of heat.",
+        "image":"https://images.unsplash.com/photo-1602873295531-9a8c52c0d33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        "id":2
+    },
+    {
+        "name": "Pranav Gupta",
+        "rating": 4.8,
+        "review": "While the Chana Masala had good flavor, they were a bit too spicy for my taste. Also, the portion size was a bit small for the price.",
+        "image":"https://images.unsplash.com/photo-1599379695366-8fdbdb961d85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
+        "id":3
+    },
+    {
+        "name": "Jai Mehta",
+        "rating": 4.9,
+        "review": "This Chicken Biryani was amazing! The leg patty was juicy and flavorful and the toppings were fresh and delicious. Would definitely recommend.",
+        "image":"https://images.unsplash.com/photo-1612338731798-e142db43564d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+        "id":4
+    },
+    {
+        "name": "Dhruv Patel",
+        "rating": 4.7,
+        "review": "The Fish Curry was good, but it was a bit overcooked for my liking. The fries that came with it were really tasty though.",
+        "image":"https://images.unsplash.com/photo-1591675101827-3b2271747d79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        "id":5
+    },
+    {
+        "name": "Arjun Kapoor",
+        "rating": 4.1,
+        "review": "The Masala Dosa was just okay. Nothing really stood out about it and I was a bit disappointed for the price.",
+        "image":"https://images.unsplash.com/photo-1605789324372-e2d18680046c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=483&q=80",
+        "id":6
+    }
+]

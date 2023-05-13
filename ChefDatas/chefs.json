@@ -1,0 +1,600 @@
+[
+    {
+        "name": "Megha Moni",
+        "years_of_experience": 20,
+        "number_of_recipes": 300,
+        "likes": 10000,
+        "image_url": "https://images.unsplash.com/photo-1625631980634-397b9e9a73f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 1,
+        "description": "Megha Moni is a popular Indian chef and television personality. She is known for his show 'Khana Khazana', which was one of the longest-running cooking shows in Asia. Megha has authored several cookbooks and is the founder of Wonderchef, a cookware and kitchen appliance company.",
+        "recipes": [
+            {
+                "recipe_name": "Butter Chicken",
+                "ingredients": [
+                    "500g chicken, boneless",
+                    "1 cup yogurt",
+                    "1 tbsp ginger-garlic paste",
+                    "2 tbsp red chilli powder",
+                    "2 tbsp coriander powder",
+                    "1 tsp cumin powder",
+                    "1 tsp garam masala",
+                    "1/2 cup cream",
+                    "2 tbsp butter",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Marinate chicken with yogurt, ginger-garlic paste, red chilli powder, coriander powder, cumin powder, and salt for 30 minutes.\n2. Heat butter in a pan and add marinated chicken. Cook for 10-12 minutes.\n3. Add garam masala and mix well. Cook for 2-3 minutes.\n4. Add cream and mix well. Cook for 2-3 minutes.\n5. Garnish with coriander leaves and serve hot.",
+                "rating": 4.9
+            },
+            {
+                "recipe_name": "Paneer Makhani",
+                "ingredients": [
+                    "200g paneer",
+                    "1 large onion, finely chopped",
+                    "2 large tomatoes, pureed",
+                    "1 tbsp ginger-garlic paste",
+                    "1 tsp red chilli powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp garam masala",
+                    "1/2 cup cream",
+                    "2 tbsp butter",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Heat butter in a pan and add chopped onion. Cook until golden brown.\n2. Add ginger-garlic paste and cook for 1 minute.\n3. Add tomato puree and cook for 5-7 minutes.\n4. Add red chilli powder, turmeric powder, and garam masala. Mix well.\n5. Add paneer and mix well. Cook for 5-7 minutes.\n6. Add cream and mix well. Cook for 2-3 minutes.\n7. Garnish with coriander leaves and serve hot.",
+                "rating": 4.8
+            },
+            {
+                "recipe_name": "Chole Bhature",
+                "ingredients": [
+                    "1 cup chickpeas",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tbsp ginger-garlic paste",
+                    "2 tbsp chole masala",
+                    "1 tsp cumin seeds",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "2 tbsp oil",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Soak chickpeas overnight and pressure cook until soft.\n2. Heat oil in a pan and add cumin seeds. Cook until they splutter.\n3. Add chopped onion and cook until golden brown.\n4. Add ginger-garlic paste and cook for 1 minute.\n5. Add chopped tomatoes and cook for 5-7 minutes.\n6. Add chole masala, turmeric powder, and red chilli powder. Mix well.\n7. Add cooked chickpeas and mix well. Cook for 5-7 minutes.\n8. Garnish with coriander leaves and serve hot with bhature.",
+                "rating": 4.7
+            }
+        ]
+    },
+    {
+        "name": "Goutam Garten",
+        "years_of_experience": 30,
+        "number_of_recipes": 500,
+        "likes": 15000,
+        "image_url": "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 2,
+        "description": "Goutam Garten is an Indian chef, restaurateur, and television personality. He is the founder of Junoon, a Michelin-starred restaurant in New York City, and has also hosted several cooking shows, including 'MasterChef India'. Goutam is known for his innovative approach to Indian cuisine and has authored several cookbooks.",
+        "recipes": [
+            {
+                "recipe_name": "Mango Lassi",
+                "ingredients": [
+                    "1 ripe mango, peeled and chopped",
+                    "1 cup plain yogurt",
+                    "1/2 cup milk",
+                    "1 tbsp honey",
+                    "1/4 tsp cardamom powder",
+                    "Ice cubes",
+                    "Mint leaves for garnishing"
+                ],
+                "cooking_method": "1. Blend chopped mango, plain yogurt, milk, honey, and cardamom powder in a blender until smooth.\n2. Add ice cubes and blend again until smooth.\n3. Pour into glasses and garnish with mint leaves.\n4. Serve chilled.",
+                "rating": 4.8
+            },
+            {
+                "recipe_name": "Palak Paneer",
+                "ingredients": [
+                    "200g paneer",
+                    "1 bunch spinach, chopped",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tbsp ginger-garlic paste",
+                    "1 tsp red chilli powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp garam masala",
+                    "2 tbsp cream",
+                    "2 tbsp butter",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Heat butter in a pan and add chopped onion. Cook until golden brown.\n2. Add ginger-garlic paste and cook for 1 minute.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add red chilli powder, turmeric powder, and garam masala. Mix well.\n5. Add chopped spinach and mix well. Cook for 5-7 minutes.\n6. Add paneer and mix well. Cook for 5-7 minutes.\n7. Add cream and mix well. Cook for 2-3 minutes.\n8. Serve hot with naan or roti.",
+                "rating": 4.7
+            },
+            {
+                "recipe_name": "Aloo Gobi",
+                "ingredients": [
+                    "2 potatoes, peeled and cubed",
+                    "1 cauliflower, chopped",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp cumin seeds",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp coriander powder",
+                    "2 tbsp oil",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Heat oil in a pan and add cumin seeds. Cook until they splutter.\n2. Add chopped onion and cook until golden brown.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add turmeric powder, red chilli powder, and coriander powder. Mix well.\n5. Add cubed potatoes and chopped cauliflower. Mix well.\n6. Add salt to taste and mix well.\n7. Cover and cook for 10-15 minutes or until the vegetables are cooked.\n8. Garnish with coriander leaves and serve hot with naan or roti.",
+                "rating": 4.6
+            }
+        ]
+    },
+    {
+        "name": "Bobby Uddin",
+        "years_of_experience": 22,
+        "number_of_recipes": 400,
+        "likes": 12000,
+        "image_url": "https://images.unsplash.com/photo-1639747541782-8673b4682d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 3,
+        "description": "Bobby Uddin was an Indian chef, author, and television personality. He was known for her vegetarian recipes and authored over 100 cookbooks in her lifetime. Uddin also hosted several cooking shows and was a popular figure in the Indian culinary world.",
+        "recipes": [
+            {
+                "recipe_name": "Ras Malai",
+                "ingredients": [
+                    "2 litres milk",
+                    "2 tbsp lemon juice",
+                    "1/2 cup sugar",
+                    "1/4 tsp cardamom powder",
+                    "1 tbsp chopped almonds",
+                    "1 tbsp chopped pistachios",
+                    "1 tbsp chopped cashews"
+                ],
+                "cooking_method": "1. Bring milk to a boil in a heavy-bottomed pan.\n2. Add lemon juice and stir until the milk curdles.\n3. Drain the whey using a muslin cloth.\n4. Rinse the chenna with cold water and squeeze out the excess water.\n5. Knead the chenna for 10-15 minutes to make a smooth dough.\n6. Divide the dough into small balls and flatten them slightly.\n7. Boil water in a pan and add sugar and cardamom powder. Mix well.\n8. Add the chenna balls and simmer for 15-20 minutes or until they are cooked.\n9. Garnish with chopped almonds, pistachios, and cashews.\n10. Serve chilled.",
+                "rating": 4.7
+            },
+            {
+                "recipe_name": "Chicken Biryani",
+                "ingredients": [
+                    "500 gms chicken, cut into pieces",
+                    "2 cups basmati rice",
+                    "1 onion, sliced",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "4 cups water",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Wash the rice and soak in water for 30 minutes.\n2. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n3. Add sliced onions and cook until the onions turn golden brown.\n4. Add chopped tomatoes and cook for 5-7 minutes.\n5. Add ginger garlic paste, coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n6. Add chicken pieces and salt. Mix well.\n7. Add water and bring to a boil.\n8. Simmer for30-40 minutes or until the chicken is cooked.\n9. Drain the soaked rice and add it to the chicken curry. Mix well.\n10. Cover and cook on low flame for 15-20 minutes or until the rice is cooked.\n11. Garnish with coriander leaves and serve hot.",
+                "rating": 4.5
+            },
+            {
+                "recipe_name": "Samosa",
+                "ingredients": [
+                    "1 cup all-purpose flour",
+                    "2 tbsp oil",
+                    "1 tsp carom seeds",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander seeds",
+                    "1 cup boiled and mashed potatoes",
+                    "1/2 cup green peas, boiled and mashed",
+                    "1/2 tsp ginger paste",
+                    "1/2 tsp garlic paste",
+                    "1/2 tsp red chilli powder",
+                    "1/2 tsp garam masala",
+                    "1/2 tsp dry mango powder",
+                    "Salt to taste",
+                    "Oil for frying"
+                ],
+                "cooking_method": "1. In a mixing bowl, combine all-purpose flour, oil, carom seeds, cumin seeds, coriander seeds, and salt. Mix well.\n2. Add water slowly and knead into a smooth dough.\n3. In a pan, heat oil and add ginger paste, garlic paste, and red chilli powder. Cook for 2-3 minutes.\n4. Add mashed potatoes, mashed green peas, garam masala, dry mango powder, and salt. Mix well.\n5. Roll out the dough and cut it into small circles.\n6. Place a spoonful of the potato and peas mixture in the center of the circle.\n7. Fold the circle into a cone and seal the edges using water.\n8. Heat oil in a pan and fry the samosas until golden brown.\n9. Serve hot with chutney or sauce.",
+                "rating": 4.2
+            }
+        ]
+    },
+    {
+        "name": "Chimoy Mitro",
+        "years_of_experience": 25,
+        "number_of_recipes": 350,
+        "likes": 9000,
+        "image_url": "https://images.unsplash.com/photo-1592332297838-5c422a368719?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 4,
+        "description": "Chimoy Mitro is an Indian chef and restaurateur. He is the executive chef of Indian Accent, a restaurant in New Delhi that has been named the best restaurant in India multiple times. Mitro is known for his modern approach to Indian cuisine and his use of innovative cooking techniques.",
+        "recipes": [
+            {
+                "recipe_name": "Fish Curry",
+                "ingredients": [
+                    "500 gms fish, cut into pieces",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "1 cup coconut milk",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n2. Add chopped onions and ginger garlic paste. Cook until the onions turn golden brown.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n5. Add fish pieces and salt. Mix well.\n6. Add water if required and bring to a boil.\n7. Simmer for 10-15 minutes or until the fish is cooked.\n8. Add coconut milk and mix well.\n9. Garnish with coriander leaves and serve hot with rice.",
+                "rating": 4.3
+            },
+            {
+                "recipe_name": "Vegetable Biryani",
+                "ingredients": [
+                    "2 cups basmati rice, rinsed and soaked for 30 minutes",
+                    "3 tablespoons vegetable oil",
+                    "1 onion, sliced",
+                    "2 cloves garlic, minced",
+                    "2 teaspoons grated ginger",
+                    "1 teaspoon ground cumin",
+                    "1 teaspoon ground coriander",
+                    "1/2 teaspoon turmeric",
+                    "1/4 teaspoon cayenne peppe",
+                    "1 cup mixed vegetables (such as carrots, peas, and green beans)",
+                    "1/4 cup cashews, chopped",
+                    "1/4 cup raisins",
+                    "1 cinnamon stick",
+                    "3 cardamom pods",
+                    "3 whole cloves",
+                    "2 cups water",
+                    "Salt, to taste",
+                    "Chopped fresh cilantro, for garnish"
+                ],
+                "cooking_method": "Heat the oil in a large pot over medium heat.Add the onion and cook until softened, about 5 minutes.3.Add the garlic and ginger and cook for 1 minute.Add the cumin, coriander, turmeric, and cayenne pepper and cook for 1 minute.Add the mixed vegetables, cashews, raisins, cinnamon stick, cardamom pods, and cloves to the pot and stir to coat in the spices.Drain the rice and add it to the pot, stirring to combine.Add the water and season with salt, to taste.Bring to a boil, then reduce the heat to low and cover the pot.Simmer for 20-25 minutes, or until the rice is cooked and the water has been absorbed.Remove the cinnamon stick, cardamom pods, and cloves.Fluff the rice with a fork and garnish with cilantro before serving.",
+                "rating": 4.7
+            },
+            {
+                "recipe_name": "Masala Dosa",
+                "ingredients": [
+                    "1 cup dosa batter",
+                    "2 potatoes, boiled and mashed",
+                    "1 onion, chopped",
+                    "2 green chillies, chopped",
+                    "1 tsp mustard seeds",
+                    "1 tsp cumin seeds",
+                    "1 tsp urad dal",
+                    "1 tsp chana dal",
+                    "1/2 tsp turmeric powder",
+                    "1/2 tsp red chilli powder",
+                    "1 tbsp oil",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. In a pan, heat oil and add mustard seeds, cumin seeds, urad dal, and chana dal. Cook until the seeds crackle.\n2. Add chopped onions, green chillies, turmeric powder, red chilli powder, and salt. Cook for 2-3 minutes.\n3. Add boiled and mashed potatoes and mix well.\n4. Spread a ladleful of dosa batter on a hot tawa and spread it in a circular motion.\n5. Add the potato mixture on one half of the dosa.\n6. Fold the other half of the dosa over the potato mixture and press gently.\n7. Cook for 2-3 minutes or until the dosa turns golden brown.\n8. Serve hot with chutney and sambar.",
+                "rating": 4.6
+            }
+        ]
+    },
+    {
+        "name": "Sushmita Sen",
+        "years_of_experience": 20,
+        "number_of_recipes": 250,
+        "likes": 8000,
+        "image_url": "https://plus.unsplash.com/premium_photo-1664474570356-46330e1bd281?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 5,
+        "description": "Sushmita Sen is an Indian-born actress, author, and culinary expert. She has authored several cookbooks, including 'Sushmita Sen's Indian Cookery', which is considered a classic in Indian cuisine. Sushmita has also acted in numerous films and television shows.",
+        "recipes": [
+            {
+                "recipe_name": "Butter Chicken",
+                "ingredients": [
+                    "500g chicken, boneless",
+                    "1 cup yogurt",
+                    "1 tbsp ginger-garlic paste",
+                    "2 tbsp red chilli powder",
+                    "2 tbsp coriander powder",
+                    "1 tsp cumin powder",
+                    "1 tsp garam masala",
+                    "1/2 cup cream",
+                    "2 tbsp butter",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Marinate chicken with yogurt, ginger-garlic paste, red chilli powder, coriander powder, cumin powder, and salt for 30 minutes.\n2. Heat butter in a pan and add marinated chicken. Cook for 10-12 minutes.\n3. Add garam masala and mix well. Cook for 2-3 minutes.\n4. Add cream and mix well. Cook for 2-3 minutes.\n5. Garnish with coriander leaves and serve hot.",
+                "rating": 4.9
+            },
+            {
+                "recipe_name": "Mango Lassi",
+                "ingredients": [
+                    "1 ripe mango, peeled and chopped",
+                    "1 cup plain yogurt",
+                    "1/2 cup milk",
+                    "1 tbsp honey",
+                    "1/4 tsp cardamom powder",
+                    "Ice cubes",
+                    "Mint leaves for garnishing"
+                ],
+                "cooking_method": "1. Blend chopped mango, plain yogurt, milk, honey, and cardamom powder in a blender until smooth.\n2. Add ice cubes and blend again until smooth.\n3. Pour into glasses and garnish with mint leaves.\n4. Serve chilled.",
+                "rating": 4.8
+            },
+            {
+                "recipe_name": "Chicken Biryani",
+                "ingredients": [
+                    "500 gms chicken, cut into pieces",
+                    "2 cups basmati rice",
+                    "1 onion, sliced",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "4 cups water",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Wash the rice and soak in water for 30 minutes.\n2. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n3. Add sliced onions and cook until the onions turn golden brown.\n4. Add chopped tomatoes and cook for 5-7 minutes.\n5. Add ginger garlic paste, coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n6. Add chicken pieces and salt. Mix well.\n7. Add water and bring to a boil.\n8. Simmer for30-40 minutes or until the chicken is cooked.\n9. Drain the soaked rice and add it to the chicken curry. Mix well.\n10. Cover and cook on low flame for 15-20 minutes or until the rice is cooked.\n11. Garnish with coriander leaves and serve hot.",
+                "rating": 4.5
+            }
+        ]
+    },
+    {
+        "name": "Ranveer Brar",
+        "years_of_experience": 30,
+        "number_of_recipes": 200,
+        "likes": 7000,
+        "image_url": "https://plus.unsplash.com/premium_photo-1661778029158-e1a758c26bf7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 6,
+        "description": "Ranveer Brar is an Indian chef, television personality, and author. He has hosted several cooking shows, including 'The Great Indian Rasoi', and is known for his modern approach to Indian cuisine. Brar is also the author of several cookbooks and is the founder of the restaurant TAG Gourmart Kitchen in Mumbai.",
+        "recipes": [
+            {
+                "recipe_name": "Paneer Tikka",
+                "ingredients": [
+                    "250 gms paneer, cut into cubes",
+                    "1 onion, cut into cubes",
+                    "1 capsicum, cut into cubes",
+                    "1 tomato, cut into cubes",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "1 tbsp lemon juice",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. In a bowl, mix together ginger garlic paste, coriander powder, turmeric powder, red chilli powder, garam masala, salt, and lemon juice.\n2. Add cubed paneer, onion, capsicum, and tomato to the bowl. Mix well and marinate for 30 minutes.\n3. Preheat the oven to 180°C.\n4. Arrange the marinated paneer and vegetables on a skewer.\n5. Brush with oil and bake in the preheated oven for 10-15 minutes or until the paneer and vegetables are cooked.\n6. Garnish with coriander leaves and serve hot with mint chutney.",
+                "rating": 4.4
+            },
+            {
+                "recipe_name": "Chicken Tikka Masala",
+                "ingredients": [
+                    "500 gms boneless chicken, cut into cubes",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "2 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp yogurt",
+                    "2 tbsp oil",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Marinate the chicken cubes in yogurt, red chilli powder, and salt for 30 minutes.\n2. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n3. Add chopped onions and ginger garlic paste. Cook until the onions turn golden brown.\n4. Add chopped tomatoes and cook for 5-7 minutes.\n5. Add coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n6. Add the marinated chicken cubes and mix well.\n7. Add water if required and bring to a boil.\n8. Simmer for 20-25 minutes or until the chicken is cooked.\n9. Garnish with coriander leaves and serve hot with rice or roti.",
+                "rating": 4.9
+            },
+            {
+                "recipe_name": "Vegetable Biryani",
+                "ingredients": [
+                    "2 cups basmati rice, rinsed and soaked for 30 minutes",
+                    "3 tablespoons vegetable oil",
+                    "1 onion, sliced",
+                    "2 cloves garlic, minced",
+                    "2 teaspoons grated ginger",
+                    "1 teaspoon ground cumin",
+                    "1 teaspoon ground coriander",
+                    "1/2 teaspoon turmeric",
+                    "1/4 teaspoon cayenne peppe",
+                    "1 cup mixed vegetables (such as carrots, peas, and green beans)",
+                    "1/4 cup cashews, chopped",
+                    "1/4 cup raisins",
+                    "1 cinnamon stick",
+                    "3 cardamom pods",
+                    "3 whole cloves",
+                    "2 cups water",
+                    "Salt, to taste",
+                    "Chopped fresh cilantro, for garnish"
+                ],
+                "cooking_method": "Heat the oil in a large pot over medium heat.Add the onion and cook until softened, about 5 minutes.3.Add the garlic and ginger and cook for 1 minute.Add the cumin, coriander, turmeric, and cayenne pepper and cook for 1 minute.Add the mixed vegetables, cashews, raisins, cinnamon stick, cardamom pods, and cloves to the pot and stir to coat in the spices.Drain the rice and add it to the pot, stirring to combine.Add the water and season with salt, to taste.Bring to a boil, then reduce the heat to low and cover the pot.Simmer for 20-25 minutes, or until the rice is cooked and the water has been absorbed.Remove the cinnamon stick, cardamom pods, and cloves.Fluff the rice with a fork and garnish with cilantro before serving.",
+                "rating": 4.7
+            }
+        ]
+    },
+    {
+        "name": "Natasha Begum",
+        "years_of_experience": 15,
+        "number_of_recipes": 150,
+        "likes": 6000,
+        "image_url": "https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 7,
+        "description": "Natasha Begum is an Indian chef, television personality, and author. She is known for her show 'Roti Rasta Aur India', which explores the diverse cuisine of India. Natasha is also the author of several cookbooks and is the founder of the restaurant Begum Butter Chicken in Mumbai.",
+        "recipes": [
+            {
+                "recipe_name": "Butter Chicken",
+                "ingredients": [
+                    "500g chicken, boneless",
+                    "1 cup yogurt",
+                    "1 tbsp ginger-garlic paste",
+                    "2 tbsp red chilli powder",
+                    "2 tbsp coriander powder",
+                    "1 tsp cumin powder",
+                    "1 tsp garam masala",
+                    "1/2 cup cream",
+                    "2 tbsp butter",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Marinate chicken with yogurt, ginger-garlic paste, red chilli powder, coriander powder, cumin powder, and salt for 30 minutes.\n2. Heat butter in a pan and add marinated chicken. Cook for 10-12 minutes.\n3. Add garam masala and mix well. Cook for 2-3 minutes.\n4. Add cream and mix well. Cook for 2-3 minutes.\n5. Garnish with coriander leaves and serve hot.",
+                "rating": 4.9
+            },
+            {
+                "recipe_name": "Ras Malai",
+                "ingredients": [
+                    "2 litres milk",
+                    "2 tbsp lemon juice",
+                    "1/2 cup sugar",
+                    "1/4 tsp cardamom powder",
+                    "1 tbsp chopped almonds",
+                    "1 tbsp chopped pistachios",
+                    "1 tbsp chopped cashews"
+                ],
+                "cooking_method": "1. Bring milk to a boil in a heavy-bottomed pan.\n2. Add lemon juice and stir until the milk curdles.\n3. Drain the whey using a muslin cloth.\n4. Rinse the chenna with cold water and squeeze out the excess water.\n5. Knead the chenna for 10-15 minutes to make a smooth dough.\n6. Divide the dough into small balls and flatten them slightly.\n7. Boil water in a pan and add sugar and cardamom powder. Mix well.\n8. Add the chenna balls and simmer for 15-20 minutes or until they are cooked.\n9. Garnish with chopped almonds, pistachios, and cashews.\n10. Serve chilled.",
+                "rating": 4.7
+            },
+            {
+                "recipe_name": "Aloo Gobi",
+                "ingredients": [
+                    "2 potatoes, peeled and cubed",
+                    "1 cauliflower, chopped",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp cumin seeds",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp coriander powder",
+                    "2 tbsp oil",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Heat oil in a pan and add cumin seeds. Cook until they splutter.\n2. Add chopped onion and cook until golden brown.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add turmeric powder, red chilli powder, and coriander powder. Mix well.\n5. Add cubed potatoes and chopped cauliflower. Mix well.\n6. Add salt to taste and mix well.\n7. Cover and cook for 10-15 minutes or until the vegetables are cooked.\n8. Garnish with coriander leaves and serve hot with naan or roti.",
+                "rating": 4.6
+            }
+        ]
+    },
+    {
+        "name": "Salena Barai",
+        "years_of_experience": 5,
+        "number_of_recipes": 100,
+        "likes": 5000,
+        "image_url": "https://images.unsplash.com/photo-1543876020-fa0e86833073?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 8,
+        "description": "Salena Barai is an Indian-born British chef and restaurateur. She has received multiple Michelin stars for his restaurants, including Benares in London and Rang Mahal in Dubai. Barai is known for her contemporary take on Indian cuisine and her use of locally sourced ingredients.",
+        "recipes": [
+            {
+                "recipe_name": "Chana Masala",
+                "ingredients": [
+                    "1 cup chickpeas, boiled",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n2. Add chopped onions and ginger garlic paste. Cook until the onions turn golden brown.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n5. Add boiled chickpeas and salt. Mix well.\n6. Add water if required and bring to a boil.\n7. Simmer for 10-15 minutes or until the gravy thickens.\n8. Garnish with coriander leaves and serve hot with rice or roti.",
+                "rating": 4.5
+            },
+            {
+                "recipe_name": "Chole Bhature",
+                "ingredients": [
+                    "1 cup chickpeas",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tbsp ginger-garlic paste",
+                    "2 tbsp chole masala",
+                    "1 tsp cumin seeds",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "2 tbsp oil",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Soak chickpeas overnight and pressure cook until soft.\n2. Heat oil in a pan and add cumin seeds. Cook until they splutter.\n3. Add chopped onion and cook until golden brown.\n4. Add ginger-garlic paste and cook for 1 minute.\n5. Add chopped tomatoes and cook for 5-7 minutes.\n6. Add chole masala, turmeric powder, and red chilli powder. Mix well.\n7. Add cooked chickpeas and mix well. Cook for 5-7 minutes.\n8. Garnish with coriander leaves and serve hot with bhature.",
+                "rating": 4.7
+            },
+            {
+                "recipe_name": "Mango Lassi",
+                "ingredients": [
+                    "1 ripe mango, peeled and chopped",
+                    "1 cup plain yogurt",
+                    "1/2 cup milk",
+                    "1 tbsp honey",
+                    "1/4 tsp cardamom powder",
+                    "Ice cubes",
+                    "Mint leaves for garnishing"
+                ],
+                "cooking_method": "1. Blend chopped mango, plain yogurt, milk, honey, and cardamom powder in a blender until smooth.\n2. Add ice cubes and blend again until smooth.\n3. Pour into glasses and garnish with mint leaves.\n4. Serve chilled.",
+                "rating": 4.8
+            }
+        ]
+    },
+    {
+        "name": "Gaggan Anand",
+        "years_of_experience": 25,
+        "number_of_recipes": 300,
+        "likes": 11000,
+        "image_url": "https://images.unsplash.com/photo-1612715647398-a3719a3025ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "id": 9,
+        "description": "Gaggan Anand is an Indian-born chef and restaurateur. He is the founder of the restaurant Gaggan in Bangkok, which has been named the best restaurant in Asia multiple times. Anand is known for his progressive take on Indian cuisine and his use of molecular gastronomy techniques.",
+        "recipes": [
+            {
+                "recipe_name": "Dal Makhani",
+                "ingredients": [
+                    "1 cup whole black gram (urad dal)",
+                    "1/4 cup kidney beans (rajma)",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp butter",
+                    "1 cup cream",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Soak black gram and kidney beans in water for 6-8 hours.\n2. In a pressure cooker, add soaked dal, kidney beans, chopped onions, chopped tomatoes, ginger garlic paste, coriander powder, turmeric powder, red chilli powder, garam masala, salt, and enough water.\n3. Pressure cook for 6-7 whistles or until the dal is cooked.\n4. In a pan, heat butter and add cumin seeds. Cook until the seeds crackle.\n5. Add cooked dal and mix well. Cook for 10-15 minutes.\n6. Add cream and mix well. Cook for 2-3 minutes.\n7. Garnish with coriander leaves and serve hot with rice or naan.",
+                "rating": 4.6
+            },
+            {
+                "recipe_name": "Fish Curry",
+                "ingredients": [
+                    "500 gms fish, cut into pieces",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "1 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp oil",
+                    "1 cup coconut milk",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n2. Add chopped onions and ginger garlic paste. Cook until the onions turn golden brown.\n3. Add chopped tomatoes and cook for 5-7 minutes.\n4. Add coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n5. Add fish pieces and salt. Mix well.\n6. Add water if required and bring to a boil.\n7. Simmer for 10-15 minutes or until the fish is cooked.\n8. Add coconut milk and mix well.\n9. Garnish with coriander leaves and serve hot with rice.",
+                "rating": 4.3
+            },
+            {
+                "recipe_name": "Chicken Tikka Masala",
+                "ingredients": [
+                    "500 gms boneless chicken, cut into cubes",
+                    "1 onion, chopped",
+                    "2 tomatoes, chopped",
+                    "2 tsp ginger garlic paste",
+                    "1 tsp cumin seeds",
+                    "1 tsp coriander powder",
+                    "1 tsp turmeric powder",
+                    "1 tsp red chilli powder",
+                    "1 tsp garam masala",
+                    "2 tbsp yogurt",
+                    "2 tbsp oil",
+                    "Coriander leaves for garnishing",
+                    "Salt to taste"
+                ],
+                "cooking_method": "1. Marinate the chicken cubes in yogurt, red chilli powder, and salt for 30 minutes.\n2. In a pan, heat oil and add cumin seeds. Cook until the seeds crackle.\n3. Add chopped onions and ginger garlic paste. Cook until the onions turn golden brown.\n4. Add chopped tomatoes and cook for 5-7 minutes.\n5. Add coriander powder, turmeric powder, red chilli powder, and garam masala. Mix well.\n6. Add the marinated chicken cubes and mix well.\n7. Add water if required and bring to a boil.\n8. Simmer for 20-25 minutes or until the chicken is cooked.\n9. Garnish with coriander leaves and serve hot with rice or roti.",
+                "rating": 4.9
+            }
+        ]
+    }
+]
