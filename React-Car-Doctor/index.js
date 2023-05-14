@@ -11,14 +11,22 @@ app.use(cors())
 app.use(express.json())
 
 
-const verifyJWT = (req,res,next) =>{
-    console.log('hitting')
-    console.log(req.headers.authorization)
+const verifyJWT = (req, res, next) => {
+    // console.log(req.headers.authorization)
     const authorization = req.headers.authorization;
-    if(!authorization){
-        return res.send({error : true , message : 'Unauthorization access'})
+    if (!authorization) {
+        return res.status(401).send({ error: true, message: 'Unauthorization access' })
     }
-    
+
+    const token = authorization.split(' ')[1]
+    // console.log(token)
+    jwt.verify(token, process.env.TOKEN, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({ error: true, message: 'Unauthorization access' })
+        }
+        req.decoded = decoded
+        next();
+    })
 }
 
 
@@ -42,10 +50,10 @@ async function run() {
         const checkoutCollections = client.db("cardocDB").collection("checkout");
 
 
-        app.post('/jwt',(req,res) => {
+        app.post('/jwt', (req, res) => {
             const user = req.body;
-            const token = jwt.sign(user,process.env.TOKEN, { expiresIn: '4h' })
-            res.send({token})
+            const token = jwt.sign(user, process.env.TOKEN, { expiresIn: '1h' })
+            res.send({ token })
         })
 
 
@@ -75,7 +83,17 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/checkout', verifyJWT , async (req, res) => {
+
+        app.get('/checkout', verifyJWT, async (req, res) => {
+
+            const decoded = req.decoded;
+
+            if (decoded.email !== req.query?.email) {
+                return res.status(403).send({ error: true, message:'forbidden access' })
+            }
+
+            console.log('inside', decoded)
+
             let query = {};
             if (req.query?.email) {
                 query = { email: req.query.email }
@@ -84,6 +102,7 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+
 
         app.get('/checkout', async (req, res) => {
             const cursor = checkoutCollections.find()
@@ -102,7 +121,7 @@ async function run() {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) }
             const conformation = req.body;
-            console.log(conformation)
+            // console.log(conformation)
             const updateDoc = {
                 $set: {
                     status: conformation.status
