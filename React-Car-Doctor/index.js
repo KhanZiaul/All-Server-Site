@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express()
+const jwt = require('jsonwebtoken');
 const cors = require('cors');
 require('dotenv').config()
 const port = process.env.PORT || 3000;
@@ -30,6 +31,16 @@ async function run() {
 
         const checkoutCollections = client.db("cardocDB").collection("checkout");
 
+        app.post('/jwt',(req,res) => {
+            const user = req.body;
+            const token = jwt.sign(user,process.env.TOKEN, { expiresIn: '1h' })
+            res.send(token)
+        })
+
+
+
+        // Services Routes
+
         app.get('/services', async (req, res) => {
             const cursor = serviceCollections.find()
             const result = await cursor.toArray()
@@ -45,6 +56,8 @@ async function run() {
             const result = await serviceCollections.findOne(query, options);
             res.send(result)
         })
+
+        // CheckOut Routes
 
         app.post('/checkout', async (req, res) => {
             const singleCheckout = req.body;
