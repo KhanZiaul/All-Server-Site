@@ -11,6 +11,16 @@ app.use(cors())
 app.use(express.json())
 
 
+const verifyJWT = (req,res,next) =>{
+    console.log('hitting')
+    console.log(req.headers.authorization)
+    const authorization = req.headers.authorization;
+    if(!authorization){
+        return res.send({error : true , message : 'Unauthorization access'})
+    }
+    
+}
+
 
 const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.mf37tl1.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -31,12 +41,12 @@ async function run() {
 
         const checkoutCollections = client.db("cardocDB").collection("checkout");
 
+
         app.post('/jwt',(req,res) => {
             const user = req.body;
-            const token = jwt.sign(user,process.env.TOKEN, { expiresIn: '1h' })
-            res.send(token)
+            const token = jwt.sign(user,process.env.TOKEN, { expiresIn: '4h' })
+            res.send({token})
         })
-
 
 
         // Services Routes
@@ -65,7 +75,7 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/checkout', async (req, res) => {
+        app.get('/checkout', verifyJWT , async (req, res) => {
             let query = {};
             if (req.query?.email) {
                 query = { email: req.query.email }
