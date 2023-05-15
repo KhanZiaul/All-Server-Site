@@ -43,7 +43,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect();
+        // await client.connect();
 
         const serviceCollections = client.db("cardocDB").collection("cardocs");
 
@@ -85,14 +85,10 @@ async function run() {
 
 
         app.get('/checkout', verifyJWT, async (req, res) => {
-
             const decoded = req.decoded;
-
             if (decoded.email !== req.query?.email) {
                 return res.status(403).send({ error: true, message:'forbidden access' })
             }
-
-            console.log('inside', decoded)
 
             let query = {};
             if (req.query?.email) {
