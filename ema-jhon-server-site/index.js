@@ -30,15 +30,17 @@ async function run() {
         const productsCollections = client.db("emajhonDB").collection("userCollections");;
 
         app.get('/products',async(req,res) => {
+
             const result = await productsCollections.find().toArray()
             res.send(result)
         })
         
         app.get('/totalProducts',async(req,res) => {
-
             const totalProducts = await productsCollections.estimatedDocumentCount()
             res.send({totalProducts})
         })
+
+      
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");

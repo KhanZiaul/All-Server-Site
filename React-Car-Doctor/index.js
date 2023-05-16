@@ -82,9 +82,10 @@ async function run() {
             const result = await checkoutCollections.insertOne(singleCheckout);
             res.send(result)
         })
-
+        
 
         app.get('/checkout', verifyJWT, async (req, res) => {
+            console.log('down')
             const decoded = req.decoded;
             if (decoded.email !== req.query?.email) {
                 return res.status(403).send({ error: true, message:'forbidden access' })
@@ -99,12 +100,6 @@ async function run() {
             res.send(result)
         })
 
-
-        app.get('/checkout', async (req, res) => {
-            const cursor = checkoutCollections.find()
-            const result = await cursor.toArray()
-            res.send(result)
-        })
 
         app.get('/checkout/:id', async (req, res) => {
             const id = req.params.id;
