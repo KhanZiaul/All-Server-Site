@@ -85,7 +85,6 @@ async function run() {
         
 
         app.get('/checkout', verifyJWT, async (req, res) => {
-            console.log('down')
             const decoded = req.decoded;
             if (decoded.email !== req.query?.email) {
                 return res.status(403).send({ error: true, message:'forbidden access' })
