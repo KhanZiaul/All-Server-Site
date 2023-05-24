@@ -52,14 +52,15 @@ async function run() {
             const result = await productsCollections.find(query).toArray()
             res.send(result)
         })
+        
 
-
-
-        // app.post('/cartProducts', async (req, res) => {
+        // app.get('/cartProducts', async (req, res) => {
         //     const ids = req.body;
-        //     const query = { _id: { $in: new ObjectId(ids) } }
-        //     const result = await productsCollections.find(query).toArray();
-        //     res.send(result);
+        //     // console.log(cartProducts)
+        //     const objectIds = ids.map(id => new ObjectId(id));
+        //     const query = { _id: { $in: objectIds } }
+        //     const result = await productsCollections.find(query).toArray()
+        //     res.send(result)
         // })
 
 
