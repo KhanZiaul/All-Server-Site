@@ -25,7 +25,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect();
+        // await client.connect();
 
         const productsCollections = client.db("emajhonDB").collection("userCollections");;
 
@@ -52,17 +52,6 @@ async function run() {
             const result = await productsCollections.find(query).toArray()
             res.send(result)
         })
-        
-
-        // app.get('/cartProducts', async (req, res) => {
-        //     const ids = req.body;
-        //     // console.log(cartProducts)
-        //     const objectIds = ids.map(id => new ObjectId(id));
-        //     const query = { _id: { $in: objectIds } }
-        //     const result = await productsCollections.find(query).toArray()
-        //     res.send(result)
-        // })
-
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
