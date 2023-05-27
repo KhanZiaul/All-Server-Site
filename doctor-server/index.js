@@ -27,12 +27,20 @@ async function run() {
     try {
         await client.connect();
 
-        const doctorsCollections = client.db("doctorDB").collection("doctors");;
+        const doctorsCollections = client.db("doctorDB").collection("doctors");
+        const serviceCollections = client.db("doctorDB").collection("services");
+        const reviewsCollections = client.db("doctorDB").collection("reviews");
 
         app.get('/doctors', async (req, res) => {
             const doctors = await doctorsCollections.find().toArray()
             res.send(doctors)
         })
+
+        app.get('/services', async (req, res) => {
+            const services = await serviceCollections.find().toArray()
+            res.send(services)
+        })
+
         app.get('/doctors/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id : new ObjectId(id)}
