@@ -41,6 +41,11 @@ async function run() {
             res.send(services)
         })
 
+        app.get('/reviews', async (req, res) => {
+            const reviews = await reviewsCollections.find().toArray()
+            res.send(reviews)
+        })
+
         app.get('/doctors/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id : new ObjectId(id)}
