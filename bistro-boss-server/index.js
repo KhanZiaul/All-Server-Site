@@ -10,7 +10,19 @@ const port = process.env.PORT || 7000
 app.use(cors())
 app.use(express.json())
 
-
+const jwtVerify = (req,res,next)=>{
+    const authorization = req.headers.authorization
+    if(!authorization){
+        return res.status(401).send({message:'Unauthorized'})
+    }
+    const token = authorization.split(' ')[1]
+    jwt.verify(token, process.env.TOKEN, function(err, decoded) {
+        if(err){
+            return res.status(401).send({message:'Unauthorized'})
+        }
+        req.decoded = decoded
+    });
+}
 
 
 
@@ -67,8 +79,8 @@ async function run() {
 
         app.post('/jwt',(req,res) =>{
             const data = req.body
-            const result = jwt.sign(data,process.env.TOKEN,{ expiresIn: '6h' })
-            res.send(result)
+            const token = jwt.sign(data,process.env.TOKEN,{ expiresIn: '6h' })
+            res.send({token})
         })
 
         
