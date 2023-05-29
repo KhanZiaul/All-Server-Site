@@ -10,6 +10,8 @@ const port = process.env.PORT || 7000
 app.use(cors())
 app.use(express.json())
 
+// jwt middleware
+
 const jwtVerify = (req,res,next)=>{
     const authorization = req.headers.authorization
     if(!authorization){
@@ -78,8 +80,8 @@ async function run() {
         //jwt
 
         app.post('/jwt',(req,res) =>{
-            const data = req.body
-            const token = jwt.sign(data,process.env.TOKEN,{ expiresIn: '6h' })
+            const user = req.body
+            const token = jwt.sign(user,process.env.TOKEN,{ expiresIn: '6h' })
             res.send({token})
         })
 
