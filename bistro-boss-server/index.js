@@ -72,11 +72,22 @@ async function run() {
             const result = await usersCollection.updateOne(query, updateDoc)
             res.send(result)
         })
+        const adminVerify = async(req,res,next)=>{
+            const email = req.decoded.email 
+            const query = {email : email}
+            const user = await usersCollection.findOne(query)
+            if (user?.role !== 'admin') {
+                res.status(401).send({ message: 'Unauthorized' })
+            }
+            next()
+        }
 
-        app.get('/users', async (req, res) => {
+        app.get('/users', jwtVerify, adminVerify , async (req, res) => {
             const result = await usersCollection.find().toArray()
             res.send(result)
         })
+
+    
 
         app.get('/users/admin/:email', jwtVerify, async (req, res) => {
             const email = req.params.email
@@ -86,7 +97,6 @@ async function run() {
             }
             const user = await usersCollection.findOne(query)
             const result = { admin : user?.role === 'admin' }
-            console.log(result)
             res.send(result)
 
         })
