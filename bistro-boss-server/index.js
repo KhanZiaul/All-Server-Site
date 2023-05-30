@@ -12,17 +12,18 @@ app.use(express.json())
 
 // jwt middleware
 
-const jwtVerify = (req,res,next)=>{
+const jwtVerify = (req, res, next) => {
     const authorization = req.headers.authorization
-    if(!authorization){
-        return res.status(401).send({message:'Unauthorized'})
+    if (!authorization) {
+        return res.status(401).send({ message: 'Unauthorized' })
     }
     const token = authorization.split(' ')[1]
-    jwt.verify(token, process.env.TOKEN, function(err, decoded) {
-        if(err){
-            return res.status(401).send({message:'Unauthorized'})
+    jwt.verify(token, process.env.TOKEN, function (err, decoded) {
+        if (err) {
+            return res.status(401).send({ message: 'Unauthorized' })
         }
         req.decoded = decoded
+        next()
     });
 }
 
@@ -49,43 +50,56 @@ async function run() {
 
         // users-------
 
-        app.post('/users', async(req,res) =>{
+        app.post('/users', async (req, res) => {
             const user = req.body
-            const query = {email : user.email}
+            const query = { email: user.email }
             const existUser = await usersCollection.findOne(query)
-            if(existUser){
-                return res.send({message : 'USER ALREADY EXIST'})
+            if (existUser) {
+                return res.send({ message: 'USER ALREADY EXIST' })
             }
             const result = await usersCollection.insertOne(user)
             res.send(result)
         })
 
-        app.patch('/users/admin/:id', async(req,res) =>{
+        app.patch('/users/admin/:id', async (req, res) => {
             const id = req.params.id
-            const query = {_id : new ObjectId(id)}
+            const query = { _id: new ObjectId(id) }
             const updateDoc = {
                 $set: {
-                  role : 'admin'
+                    role: 'admin'
                 },
-              };
-            const result = await usersCollection.updateOne(query,updateDoc)
+            };
+            const result = await usersCollection.updateOne(query, updateDoc)
             res.send(result)
         })
 
-        app.get('/users', async(req,res) =>{
+        app.get('/users', async (req, res) => {
             const result = await usersCollection.find().toArray()
             res.send(result)
         })
 
-        //jwt
+        app.get('/users/admin/:email', jwtVerify, async (req, res) => {
+            const email = req.params.email
+            const query = { email: email }
+            if (req.decoded.email !== email) {
+               return res.status(401).send({ message: 'Unauthorized' })
+            }
+            const user = await usersCollection.findOne(query)
+            const result = { admin : user?.role === 'admin' }
+            console.log(result)
+            res.send(result)
 
-        app.post('/jwt',(req,res) =>{
-            const user = req.body
-            const token = jwt.sign(user,process.env.TOKEN,{ expiresIn: '6h' })
-            res.send({token})
         })
 
-        
+        //jwt
+
+        app.post('/jwt', (req, res) => {
+            const user = req.body
+            const token = jwt.sign(user, process.env.TOKEN, { expiresIn: '7d' })
+            res.send({ token })
+        })
+
+
         // cart--------
 
         app.post('/carts', async (req, res) => {
@@ -94,20 +108,23 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/carts', async (req, res) => {
-            const userEmail = req.query.email ;
-            if(!userEmail){
+        app.get('/carts', jwtVerify, async (req, res) => {
+            const userEmail = req.query.email;
+            if (!userEmail) {
                 res.send([])
             }
-            const query = { email : userEmail}
+            if (req.decoded.email !== userEmail) {
+                res.status(401).send({ message: 'Unauthorized' })
+            }
+            const query = { email: userEmail }
             const result = await cartsCollection.find(query).toArray()
             res.send(result)
         })
 
-        
+
         app.delete('/carts/:id', async (req, res) => {
             const id = req.params.id
-            const query = { _id : new ObjectId(id)}
+            const query = { _id: new ObjectId(id) }
             const result = await cartsCollection.deleteOne(query)
             res.send(result)
         })
