@@ -20,7 +20,7 @@ const jwtVerify = (req, res, next) => {
     const token = authorization.split(' ')[1]
     jwt.verify(token, process.env.TOKEN, function (err, decoded) {
         if (err) {
-            return res.status(401).send({ message: 'Unauthorized' })
+            return res.status(403).send({ message: 'Forbidden Access' })
         }
         req.decoded = decoded
         next()
@@ -61,6 +61,8 @@ async function run() {
             res.send(result)
         })
 
+        // Admin Panel --------------------------------------------
+
         app.patch('/users/admin/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id: new ObjectId(id) }
@@ -72,36 +74,37 @@ async function run() {
             const result = await usersCollection.updateOne(query, updateDoc)
             res.send(result)
         })
-        const adminVerify = async(req,res,next)=>{
-            const email = req.decoded.email 
-            const query = {email : email}
+
+
+        const adminVerify = async (req, res, next) => {
+            const email = req.decoded.email
+            const query = { email: email }
             const user = await usersCollection.findOne(query)
             if (user?.role !== 'admin') {
-                res.status(401).send({ message: 'Unauthorized' })
+                return res.status(401).send({ message: 'Unauthorized' })
             }
             next()
         }
 
-        app.get('/users', jwtVerify, adminVerify , async (req, res) => {
+        app.get('/users', jwtVerify, adminVerify, async (req, res) => {
             const result = await usersCollection.find().toArray()
             res.send(result)
         })
 
-    
 
         app.get('/users/admin/:email', jwtVerify, async (req, res) => {
             const email = req.params.email
             const query = { email: email }
             if (req.decoded.email !== email) {
-               return res.status(401).send({ message: 'Unauthorized' })
+                return res.status(401).send({ message: 'Unauthorized' })
             }
             const user = await usersCollection.findOne(query)
-            const result = { admin : user?.role === 'admin' }
+            const result = { admin: user?.role === 'admin' }
             res.send(result)
 
         })
 
-        //jwt
+        //jwt ------------------------------------------
 
         app.post('/jwt', (req, res) => {
             const user = req.body
@@ -110,7 +113,7 @@ async function run() {
         })
 
 
-        // cart--------
+        // cart ---------------------------------------
 
         app.post('/carts', async (req, res) => {
             const query = req.body
@@ -121,16 +124,15 @@ async function run() {
         app.get('/carts', jwtVerify, async (req, res) => {
             const userEmail = req.query.email;
             if (!userEmail) {
-                res.send([])
+                return res.send([])
             }
             if (req.decoded.email !== userEmail) {
-                res.status(401).send({ message: 'Unauthorized' })
+                return res.status(401).send({ message: 'Unauthorized' })
             }
             const query = { email: userEmail }
             const result = await cartsCollection.find(query).toArray()
             res.send(result)
         })
-
 
         app.delete('/carts/:id', async (req, res) => {
             const id = req.params.id
@@ -148,6 +150,16 @@ async function run() {
             const result = await menuCollection.find().toArray()
             res.send(result)
         })
+
+        // Admin menu  ------------------------------------
+
+
+        app.post('/menu', async (req, res) => {
+            const newMenu = req.body
+            const result = await menuCollection.insertOne(newMenu)
+            res.send(result)
+        })
+
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
