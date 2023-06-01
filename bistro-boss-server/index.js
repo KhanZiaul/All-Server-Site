@@ -153,10 +153,16 @@ async function run() {
 
         // Admin menu  ------------------------------------
 
-
-        app.post('/menu', jwtVerify, adminVerify , async (req, res) => {
+        app.post('/menu', jwtVerify, adminVerify, async (req, res) => {
             const newMenu = req.body
             const result = await menuCollection.insertOne(newMenu)
+            res.send(result)
+        })
+
+        app.delete('/menu/:id', jwtVerify, adminVerify, async (req, res) => {
+            const id = req.params.id 
+            const query = {_id : new ObjectId(id)}
+            const result = await menuCollection.deleteOne(query)
             res.send(result)
         })
 
