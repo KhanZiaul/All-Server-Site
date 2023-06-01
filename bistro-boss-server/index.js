@@ -154,7 +154,7 @@ async function run() {
         // Admin menu  ------------------------------------
 
 
-        app.post('/menu', async (req, res) => {
+        app.post('/menu', jwtVerify, adminVerify , async (req, res) => {
             const newMenu = req.body
             const result = await menuCollection.insertOne(newMenu)
             res.send(result)
