@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken')
+const stripe = require("stripe")(process.eventNames.PAYMENT);
 const cors = require('cors');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
@@ -160,10 +161,27 @@ async function run() {
         })
 
         app.delete('/menu/:id', jwtVerify, adminVerify, async (req, res) => {
-            const id = req.params.id 
-            const query = {_id : new ObjectId(id)}
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
             const result = await menuCollection.deleteOne(query)
             res.send(result)
+        })
+
+        // payment -------------------------------------------
+
+        app.post("/create-payment-intent", async (req, res) => {
+            const { price } = req.body;
+            const amount = price * 100
+
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: amount,
+                currency: "usd",
+                payment_method_types: ["card"]
+            });
+
+            res.send({
+                clientSecret: paymentIntent.client_secret
+            });
         })
 
 
