@@ -1,9 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken')
-const stripe = require("stripe")(process.eventNames.PAYMENT);
+require('dotenv').config()
+const stripe = require("stripe")(process.env.PAYMENT);
 const cors = require('cors');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 7000
 
@@ -48,8 +48,9 @@ async function run() {
         const menuCollection = client.db("bistroDB").collection("menu");
         const cartsCollection = client.db("bistroDB").collection("carts");
         const usersCollection = client.db("bistroDB").collection("users");
+        const paymentCollection = client.db("bistroDB").collection("payment");
 
-        // users-------
+        // users  ---------------------------------------------------------
 
         app.post('/users', async (req, res) => {
             const user = req.body
@@ -109,7 +110,7 @@ async function run() {
 
         app.post('/jwt', (req, res) => {
             const user = req.body
-            const token = jwt.sign(user, process.env.TOKEN, { expiresIn: '7d' })
+            const token = jwt.sign(user, process.env.TOKEN, { expiresIn: '30d' })
             res.send({ token })
         })
 
@@ -169,10 +170,10 @@ async function run() {
 
         // payment -------------------------------------------
 
-        app.post("/create-payment-intent", async (req, res) => {
+        app.post("/create-payment-intent", jwtVerify, async (req, res) => {
             const { price } = req.body;
             const amount = price * 100
-
+            console.log(amount)
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: amount,
                 currency: "usd",
@@ -182,6 +183,12 @@ async function run() {
             res.send({
                 clientSecret: paymentIntent.client_secret
             });
+        })
+
+        app.post('/payment',async(req,res) => {
+            const payment = req.body;
+            const result = await paymentCollection.insertOne(payment)
+            res.send(result)
         })
 
 
