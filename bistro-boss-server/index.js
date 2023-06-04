@@ -194,7 +194,7 @@ async function run() {
             res.send({ result, deleteMany })
         })
 
-        app.get('/adminState' , jwtVerify ,adminVerify , async(req,res) => {
+        app.get('/adminStats' , jwtVerify ,adminVerify , async(req,res) => {
             const allUsers = await usersCollection.countDocuments()
             const products = await menuCollection.countDocuments()
             const orders = await paymentCollection.countDocuments()
@@ -209,7 +209,7 @@ async function run() {
             })
         })
 
-        app.get('/allMenuCost', jwtVerify , adminVerify , async (req, res) => {
+        app.get('/adminOrder', jwtVerify , adminVerify , async (req, res) => {
 
             const pipeline = [
                 {
