@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 7000
 
 // Middlewares
+
 app.use(cors())
 app.use(express.json())
 
@@ -193,8 +194,22 @@ async function run() {
             res.send({ result, deleteMany })
         })
 
+        app.get('/adminState' , jwtVerify ,adminVerify , async(req,res) => {
+            const allUsers = await usersCollection.countDocuments()
+            const products = await menuCollection.countDocuments()
+            const orders = await paymentCollection.countDocuments()
+            const payment = await paymentCollection.find().toArray()
+            const revenue = payment.reduce((initial , final) => initial + final.price , 0)
 
-        app.get('/allMenuCost', async (req, res) => {
+            res.send({
+                allUsers,
+                products,
+                orders,
+                revenue
+            })
+        })
+
+        app.get('/allMenuCost', jwtVerify , adminVerify , async (req, res) => {
 
             const pipeline = [
                 {
