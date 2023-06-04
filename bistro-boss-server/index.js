@@ -43,7 +43,6 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect();
 
         const reviewCollection = client.db("bistroDB").collection("reviews");
         const menuCollection = client.db("bistroDB").collection("menu");
