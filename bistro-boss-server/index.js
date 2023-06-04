@@ -185,13 +185,51 @@ async function run() {
             });
         })
 
-        app.post('/payment',async(req,res) => {
+        app.post('/payment', async (req, res) => {
             const payment = req.body;
             const result = await paymentCollection.insertOne(payment)
-            const query = {_id : {$in : payment.cartId.map(id => new ObjectId(id))}}
+            const query = { _id: { $in: payment.cartId.map(id => new ObjectId(id)) } }
             const deleteMany = await cartsCollection.deleteMany(query)
-            res.send({result , deleteMany})
+            res.send({ result, deleteMany })
         })
+
+
+        app.get('/allMenuCost', async (req, res) => {
+
+            const pipeline = [
+                {
+                    $lookup: {
+                        from: 'menu',
+                        localField: 'productsId',
+                        foreignField: '_id',
+                        as: 'menuItemsData'
+                    }
+                },
+                {
+                    $unwind: '$menuItemsData'
+                },
+                {
+                    $group: {
+                        _id: '$menuItemsData.category',
+                        count: { $sum: 1 },
+                        total: { $sum: '$menuItemsData.price' }
+                    }
+                },
+                {
+                    $project: {
+                        category: '$_id',
+                        count: 1,
+                        total: { $round: ['$total', 2] },
+                        _id: 0
+                    }
+                }
+            ];
+
+
+            const menuCosts = await paymentCollection.aggregate(pipeline).toArray();
+
+            res.send(menuCosts);
+        });
 
 
         await client.db("admin").command({ ping: 1 });
