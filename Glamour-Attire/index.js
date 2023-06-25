@@ -26,6 +26,11 @@ async function run() {
 
         const allProductsColletion = client.db("glamour-attire").collection("products")
 
+        app.get('/products',async(req,res) => {
+            const result = await allProductsColletion.find().toArray()
+            res.send(result)
+        })
+
         app.get('/products/features',async(req,res) => {
             const result = await allProductsColletion.find({type:'f'}).toArray()
             res.send(result)
