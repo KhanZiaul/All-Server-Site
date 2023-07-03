@@ -2,8 +2,9 @@ const express = require('express');
 const app = express()
 const cors = require('cors');
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 3000
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 // Middle Ware
 app.use(express.json())
@@ -26,19 +27,36 @@ async function run() {
 
         const allProductsColletion = client.db("glamour-attire").collection("products")
 
-        app.get('/products',async(req,res) => {
+        app.get('/products', async (req, res) => {
             const result = await allProductsColletion.find().toArray()
             res.send(result)
         })
 
-        app.get('/products/features',async(req,res) => {
-            const result = await allProductsColletion.find({type:'f'}).toArray()
+        app.get('/product/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await allProductsColletion.findOne(query)
             res.send(result)
         })
 
-        app.get('/products/new',async(req,res) => {
-            const result = await allProductsColletion.find({type:'n'}).toArray()
+        app.get('/products/features', async (req, res) => {
+            const result = await allProductsColletion.find({ type: 'f' }).toArray()
+
             res.send(result)
+        })
+
+        app.get('/products/new', async (req, res) => {
+            const result = await allProductsColletion.find({ type: 'n' }).toArray()
+            res.send(result)
+        })
+
+        app.post('/jwt', async (req, res) => {
+            const token = jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function (err, token) {
+                if(err){
+                    return res.send('Unauthorized')
+                }
+            });
+            res.send({token})
         })
 
         await client.db("admin").command({ ping: 1 });
