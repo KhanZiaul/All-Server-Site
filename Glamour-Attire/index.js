@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express()
 const cors = require('cors');
-require('dotenv').config()
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 const port = process.env.PORT || 3000
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
@@ -42,6 +42,7 @@ async function run() {
         // await client.connect();
 
         const allProductsColletion = client.db("glamour-attire").collection("products")
+        const usersColletion = client.db("glamour-attire").collection("users")
 
         app.get('/products', async (req, res) => {
             const result = await allProductsColletion.find().toArray()
@@ -66,16 +67,53 @@ async function run() {
             res.send(result)
         })
 
+        app.post('/user/:email', async (req, res) => {
+            const email = req.params.email
+            const isExist = await usersColletion.findOne({ email: email })
+            if (isExist) {
+                return res.send({ exist: true })
+            }
+            const user = req.body
+            const result = await usersColletion.insertOne(user)
+            res.send(result)
+        })
+
         // jwt
 
         app.post('/jwt', (req, res) => {
             const user = req.body
             const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '30d' });
+            console.log({ token })
             res.send({ token })
+        })
+
+        // Check Admin
+
+        app.get('/admin/:email', VerifyJwt, async (req, res) => {
+            const email = req.params.email
+            const query = { email: email }
+            if (req.decoded.email !== email) {
+                return res.send({ admin : false })
+            }
+            const user = await usersColletion.findOne(query)
+            res.send({ admin: user?.role === 'admin' })
+        })
+
+        // Check Seller
+
+        app.get('/seller/:email', VerifyJwt, async (req, res) => {
+            const email = req.params.email
+            const query = { email: email }
+            if (req.decoded.email !== email) {
+                return res.send({ admin : false })
+            }
+            const user = await usersColletion.findOne(query)
+            res.send({ seller : user?.role === 'seller' })
         })
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();
