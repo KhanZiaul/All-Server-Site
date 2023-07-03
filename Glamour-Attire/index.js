@@ -123,9 +123,22 @@ async function run() {
             res.send({ admin: user?.role === 'admin' })
         })
 
-
-        app.get('/manageUsers', VerifyJwt, VerifyAdmin , async (req, res) => {
+        app.get('/manageUsers', VerifyJwt, VerifyAdmin, async (req, res) => {
             const result = await usersColletion.find().toArray()
+            res.send(result)
+        })
+
+        app.patch('/makeSeller/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
+            const id = req.params.id
+            const {role,updatedRole} = req.body
+            const filter = { _id: new ObjectId(id) }
+            const updateDoc = {
+                $set: {
+                    role:role,
+                    updatedRole:updatedRole
+                },
+            };
+            const result = await usersColletion.updateOne(filter, updateDoc);
             res.send(result)
         })
 
