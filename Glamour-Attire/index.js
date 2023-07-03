@@ -142,6 +142,20 @@ async function run() {
             res.send(result)
         })
 
+        app.patch('/makeAdmin/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
+            const id = req.params.id
+            const {role,updatedRole} = req.body
+            const filter = { _id: new ObjectId(id) }
+            const updateDoc = {
+                $set: {
+                    role:role,
+                    updatedRole:updatedRole
+                },
+            };
+            const result = await usersColletion.updateOne(filter, updateDoc);
+            res.send(result)
+        })
+
         // Check Seller
 
         app.get('/seller/:email', VerifyJwt, async (req, res) => {
