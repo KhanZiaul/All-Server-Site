@@ -10,6 +10,21 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 app.use(express.json())
 app.use(cors())
 
+const VerifyJwt = async (req, res, next) => {
+    const authorization = req.headers.authorization
+    if (!authorization) {
+        return res.send('Unauthorized')
+    }
+    const token = authorization.split[1]
+    jwt.verify(token, process.env.TOKEN, function (err, decoded) {
+        if(err){
+            return res.send('Unauthorized')
+        }
+
+        const  decoded = res.decoded
+    });
+    next()
+}
 
 const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0.mf37tl1.mongodb.net/?retryWrites=true&w=majority`
 
@@ -52,11 +67,11 @@ async function run() {
 
         app.post('/jwt', async (req, res) => {
             const token = jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function (err, token) {
-                if(err){
+                if (err) {
                     return res.send('Unauthorized')
                 }
             });
-            res.send({token})
+            res.send({ token })
         })
 
         await client.db("admin").command({ ping: 1 });
