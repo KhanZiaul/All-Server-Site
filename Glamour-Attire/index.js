@@ -99,6 +99,18 @@ async function run() {
             next()
         }
 
+        // Verify Seller
+
+        const VerifySeller = async(req, res, next) => {
+            const email = req.decoded.email;
+            const query = { email: email }
+            const user = await usersColletion.findOne(query)
+            if (user?.role !== 'seller') {
+                return res.status(401).send({ message: 'Unauthorized' })
+            }
+            next()
+        }
+
         // Check Admin
 
         app.get('/admin/:email', VerifyJwt, async (req, res) => {
