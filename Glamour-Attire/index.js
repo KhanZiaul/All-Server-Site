@@ -10,21 +10,22 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 app.use(express.json())
 app.use(cors())
 
-const VerifyJwt = async (req, res, next) => {
+const VerifyJwt = ((req, res, next) => {
+
     const authorization = req.headers.authorization
     if (!authorization) {
-        return res.send('Unauthorized')
+        return res.status(401).send({ message: 'Unauthorized' })
     }
-    const token = authorization.split[1]
-    jwt.verify(token, process.env.TOKEN, function (err, decoded) {
-        if(err){
-            return res.send('Unauthorized')
+    const token = authorization.split(' ')[1]
+    jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
+        if (err) {
+            return res.status(403).send({ message: 'Forbidden Access' })
         }
-
-        const  decoded = res.decoded
+        req.decoded = decoded
+        next()
     });
-    next()
-}
+
+})
 
 const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0.mf37tl1.mongodb.net/?retryWrites=true&w=majority`
 
@@ -65,12 +66,11 @@ async function run() {
             res.send(result)
         })
 
-        app.post('/jwt', async (req, res) => {
-            const token = jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function (err, token) {
-                if (err) {
-                    return res.send('Unauthorized')
-                }
-            });
+        // jwt
+
+        app.post('/jwt', (req, res) => {
+            const user = req.body
+            const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '30d' });
             res.send({ token })
         })
 
