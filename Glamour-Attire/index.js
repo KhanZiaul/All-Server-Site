@@ -87,13 +87,25 @@ async function run() {
             res.send({ token })
         })
 
+        // Verify Admin
+
+        const VerifyAdmin = async(req, res, next) => {
+            const email = req.decoded.email;
+            const query = { email: email }
+            const user = await usersColletion.findOne(query)
+            if (user?.role !== 'admin') {
+                return res.status(401).send({ message: 'Unauthorized' })
+            }
+            next()
+        }
+
         // Check Admin
 
         app.get('/admin/:email', VerifyJwt, async (req, res) => {
             const email = req.params.email
             const query = { email: email }
             if (req.decoded.email !== email) {
-                return res.send({ admin : false })
+                return res.send({ admin: false })
             }
             const user = await usersColletion.findOne(query)
             res.send({ admin: user?.role === 'admin' })
@@ -105,10 +117,10 @@ async function run() {
             const email = req.params.email
             const query = { email: email }
             if (req.decoded.email !== email) {
-                return res.send({ admin : false })
+                return res.send({ admin: false })
             }
             const user = await usersColletion.findOne(query)
-            res.send({ seller : user?.role === 'seller' })
+            res.send({ seller: user?.role === 'seller' })
         })
 
         await client.db("admin").command({ ping: 1 });
