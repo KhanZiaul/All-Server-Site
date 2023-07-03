@@ -89,7 +89,7 @@ async function run() {
 
         // Verify Admin
 
-        const VerifyAdmin = async(req, res, next) => {
+        const VerifyAdmin = async (req, res, next) => {
             const email = req.decoded.email;
             const query = { email: email }
             const user = await usersColletion.findOne(query)
@@ -101,7 +101,7 @@ async function run() {
 
         // Verify Seller
 
-        const VerifySeller = async(req, res, next) => {
+        const VerifySeller = async (req, res, next) => {
             const email = req.decoded.email;
             const query = { email: email }
             const user = await usersColletion.findOne(query)
@@ -121,6 +121,12 @@ async function run() {
             }
             const user = await usersColletion.findOne(query)
             res.send({ admin: user?.role === 'admin' })
+        })
+
+
+        app.get('/manageUsers', VerifyJwt, VerifyAdmin , async (req, res) => {
+            const result = await usersColletion.find().toArray()
+            res.send(result)
         })
 
         // Check Seller
