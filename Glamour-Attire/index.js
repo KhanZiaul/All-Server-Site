@@ -187,14 +187,37 @@ async function run() {
 
         app.get('/newProducts/:email', async (req, res) => {
             const email = req.params.email
-            const result = await productCollections.find({sellerEmail:email , isNew : "true"}).toArray()
+            const result = await productCollections.find({ sellerEmail: email, isNew: "true" }).toArray()
             res.send(result)
         })
 
         app.delete('/deleteProduct/:id', async (req, res) => {
             const id = req.params.id
-            const filter = {_id : new ObjectId(id)}
+            const filter = { _id: new ObjectId(id) }
             const result = await productCollections.deleteOne(filter)
+            res.send(result)
+        })
+
+        app.patch('/updateProduct/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: new ObjectId(id) }
+            const newProduct = req.body
+            const updateDoc = {
+                $set: {
+                    sellerName : newProduct.sellerName,
+                    sellerEmail : newProduct.sellerEmail,
+                    brand : newProduct.brand,
+                    ratings : parseInt(newProduct.ratings),
+                    price : parseInt(newProduct.price),
+                    img : newProduct.img,
+                    type : newProduct.type,
+                    productName : newProduct.productName,
+                    productDetails : newProduct.productDetails,
+                    isNew : "true",
+                    isApproved : "false"
+                },
+            };
+            const result = await productCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
 
