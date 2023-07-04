@@ -41,40 +41,40 @@ async function run() {
     try {
         // await client.connect();
 
-        const allProductsColletion = client.db("glamour-attire").collection("products")
-        const usersColletion = client.db("glamour-attire").collection("users")
+        const productCollections = client.db("glamour-attire").collection("products")
+        const userCollections = client.db("glamour-attire").collection("users")
 
         app.get('/products', async (req, res) => {
-            const result = await allProductsColletion.find().toArray()
+            const result = await productCollections.find().toArray()
             res.send(result)
         })
 
         app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
-            const result = await allProductsColletion.findOne(query)
+            const result = await productCollections.findOne(query)
             res.send(result)
         })
 
         app.get('/products/features', async (req, res) => {
-            const result = await allProductsColletion.find({ type: 'f' }).toArray()
+            const result = await productCollections.find({ type: 'f' }).toArray()
 
             res.send(result)
         })
 
         app.get('/products/new', async (req, res) => {
-            const result = await allProductsColletion.find({ type: 'n' }).toArray()
+            const result = await productCollections.find({ type: 'n' }).toArray()
             res.send(result)
         })
 
         app.post('/user/:email', async (req, res) => {
             const email = req.params.email
-            const isExist = await usersColletion.findOne({ email: email })
+            const isExist = await userCollections.findOne({ email: email })
             if (isExist) {
                 return res.send({ exist: true })
             }
             const user = req.body
-            const result = await usersColletion.insertOne(user)
+            const result = await userCollections.insertOne(user)
             res.send(result)
         })
 
@@ -92,7 +92,7 @@ async function run() {
         const VerifyAdmin = async (req, res, next) => {
             const email = req.decoded.email;
             const query = { email: email }
-            const user = await usersColletion.findOne(query)
+            const user = await userCollections.findOne(query)
             if (user?.role !== 'admin') {
                 return res.status(401).send({ message: 'Unauthorized' })
             }
@@ -104,7 +104,7 @@ async function run() {
         const VerifySeller = async (req, res, next) => {
             const email = req.decoded.email;
             const query = { email: email }
-            const user = await usersColletion.findOne(query)
+            const user = await userCollections.findOne(query)
             if (user?.role !== 'seller') {
                 return res.status(401).send({ message: 'Unauthorized' })
             }
@@ -119,47 +119,47 @@ async function run() {
             if (req.decoded.email !== email) {
                 return res.send({ admin: false })
             }
-            const user = await usersColletion.findOne(query)
+            const user = await userCollections.findOne(query)
             res.send({ admin: user?.role === 'admin' })
         })
 
         app.get('/manageUsers', VerifyJwt, VerifyAdmin, async (req, res) => {
-            const result = await usersColletion.find().toArray()
+            const result = await userCollections.find().toArray()
             res.send(result)
         })
 
         app.patch('/makeSeller/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
             const id = req.params.id
-            const {role,updatedRole} = req.body
+            const { role, updatedRole } = req.body
             const filter = { _id: new ObjectId(id) }
             const updateDoc = {
                 $set: {
-                    role:role,
-                    updatedRole:updatedRole
+                    role: role,
+                    updatedRole: updatedRole
                 },
             };
-            const result = await usersColletion.updateOne(filter, updateDoc);
+            const result = await userCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
 
         app.patch('/makeAdmin/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
             const id = req.params.id
-            const {role,updatedRole} = req.body
+            const { role, updatedRole } = req.body
             const filter = { _id: new ObjectId(id) }
             const updateDoc = {
                 $set: {
-                    role:role,
-                    updatedRole:updatedRole
+                    role: role,
+                    updatedRole: updatedRole
                 },
             };
-            const result = await usersColletion.updateOne(filter, updateDoc);
+            const result = await userCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
 
-        app.delete('/removeUser/:id',async(req,res)=>{
-            const id = req.params.id 
-            const query = {_id : new ObjectId(id)}
-            const result = await usersColletion.deleteOne(query)
+        app.delete('/removeUser/:id', async (req, res) => {
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
+            const result = await userCollections.deleteOne(query)
             res.send(result)
         })
 
@@ -171,8 +171,24 @@ async function run() {
             if (req.decoded.email !== email) {
                 return res.send({ admin: false })
             }
-            const user = await usersColletion.findOne(query)
+            const user = await userCollections.findOne(query)
             res.send({ seller: user?.role === 'seller' })
+        })
+
+        app.post('/addNewProduct', async (req, res) => {
+            const newProduct = req.body
+            newProduct.price = parseInt(newProduct.price)
+            newProduct.ratings = parseInt(newProduct.ratings)
+            newProduct.isNew = "true"
+            newProduct.isApproved = "false"
+            const result = await productCollections.insertOne(newProduct)
+            res.send(result)
+        })
+
+        app.get('/newProducts/:email', async (req, res) => {
+            const email = req.params.email
+            const result = await productCollections.find({sellerEmail:email , isNew : "true"}).toArray()
+            res.send(result)
         })
 
         await client.db("admin").command({ ping: 1 });
