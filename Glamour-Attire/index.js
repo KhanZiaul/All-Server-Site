@@ -234,6 +234,20 @@ async function run() {
             res.send(result)
         })
 
+        app.patch('/denyProduct/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
+            const id = req.params.id
+            const updateData = req.body
+            const filter = { _id: new ObjectId(id) }
+            const updateDoc = {
+                $set: {
+                    isApproved : updateData.isApproved
+                },
+            }
+            const result = await productCollections.updateOne(filter, updateDoc)
+            res.send(result)
+        })
+
+
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
