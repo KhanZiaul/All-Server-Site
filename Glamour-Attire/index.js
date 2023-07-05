@@ -43,6 +43,7 @@ async function run() {
 
         const productCollections = client.db("glamour-attire").collection("products")
         const userCollections = client.db("glamour-attire").collection("users")
+        const selctedProductCollections = client.db("glamour-attire").collection("selectedProducts")
 
         app.get('/products', async (req, res) => {
             const result = await productCollections.find().toArray()
@@ -156,68 +157,10 @@ async function run() {
             res.send(result)
         })
 
-        app.delete('/removeUser/:id', async (req, res) => {
+        app.delete('/removeUser/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
             const id = req.params.id
             const query = { _id: new ObjectId(id) }
             const result = await userCollections.deleteOne(query)
-            res.send(result)
-        })
-
-        // Check Seller
-
-        app.get('/seller/:email', VerifyJwt, async (req, res) => {
-            const email = req.params.email
-            const query = { email: email }
-            if (req.decoded.email !== email) {
-                return res.send({ admin: false })
-            }
-            const user = await userCollections.findOne(query)
-            res.send({ seller: user?.role === 'seller' })
-        })
-
-        app.post('/addNewProduct', async (req, res) => {
-            const newProduct = req.body
-            newProduct.price = parseInt(newProduct.price)
-            newProduct.ratings = parseInt(newProduct.ratings)
-            newProduct.isNew = "true"
-            newProduct.isApproved = "false"
-            const result = await productCollections.insertOne(newProduct)
-            res.send(result)
-        })
-
-        app.get('/newProducts/:email', async (req, res) => {
-            const email = req.params.email
-            const result = await productCollections.find({ sellerEmail: email, isNew: "true" }).toArray()
-            res.send(result)
-        })
-
-        app.delete('/deleteProduct/:id', async (req, res) => {
-            const id = req.params.id
-            const filter = { _id: new ObjectId(id) }
-            const result = await productCollections.deleteOne(filter)
-            res.send(result)
-        })
-
-        app.patch('/updateProduct/:id', async (req, res) => {
-            const id = req.params.id
-            const filter = { _id: new ObjectId(id) }
-            const newProduct = req.body
-            const updateDoc = {
-                $set: {
-                    sellerName: newProduct.sellerName,
-                    sellerEmail: newProduct.sellerEmail,
-                    brand: newProduct.brand,
-                    ratings: parseInt(newProduct.ratings),
-                    price: parseInt(newProduct.price),
-                    img: newProduct.img,
-                    type: newProduct.type,
-                    productName: newProduct.productName,
-                    productDetails: newProduct.productDetails,
-                    isNew: "true",
-                    isApproved: "false"
-                },
-            };
-            const result = await productCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
 
@@ -240,7 +183,7 @@ async function run() {
             const filter = { _id: new ObjectId(id) }
             const updateDoc = {
                 $set: {
-                    isApproved : updateData.isApproved
+                    isApproved: updateData.isApproved
                 },
             }
             const result = await productCollections.updateOne(filter, updateDoc)
@@ -258,6 +201,64 @@ async function run() {
                 },
             }
             const result = await productCollections.updateOne(filter, updateDoc)
+            res.send(result)
+        })
+
+        // Check Seller
+
+        app.get('/seller/:email', VerifyJwt, async (req, res) => {
+            const email = req.params.email
+            const query = { email: email }
+            if (req.decoded.email !== email) {
+                return res.send({ admin: false })
+            }
+            const user = await userCollections.findOne(query)
+            res.send({ seller: user?.role === 'seller' })
+        })
+
+        app.post('/addNewProduct', VerifyJwt, VerifySeller, async (req, res) => {
+            const newProduct = req.body
+            newProduct.price = parseInt(newProduct.price)
+            newProduct.ratings = parseInt(newProduct.ratings)
+            newProduct.isNew = "true"
+            newProduct.isApproved = "false"
+            const result = await productCollections.insertOne(newProduct)
+            res.send(result)
+        })
+
+        app.get('/newProducts/:email', VerifyJwt, VerifySeller, async (req, res) => {
+            const email = req.params.email
+            const result = await productCollections.find({ sellerEmail: email, isNew: "true" }).toArray()
+            res.send(result)
+        })
+
+        app.delete('/deleteProduct/:id', VerifyJwt, VerifySeller, async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: new ObjectId(id) }
+            const result = await productCollections.deleteOne(filter)
+            res.send(result)
+        })
+
+        app.patch('/updateProduct/:id', VerifyJwt, VerifySeller, async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: new ObjectId(id) }
+            const newProduct = req.body
+            const updateDoc = {
+                $set: {
+                    sellerName: newProduct.sellerName,
+                    sellerEmail: newProduct.sellerEmail,
+                    brand: newProduct.brand,
+                    ratings: parseInt(newProduct.ratings),
+                    price: parseInt(newProduct.price),
+                    img: newProduct.img,
+                    type: newProduct.type,
+                    productName: newProduct.productName,
+                    productDetails: newProduct.productDetails,
+                    isNew: "true",
+                    isApproved: "false"
+                },
+            };
+            const result = await productCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
 
