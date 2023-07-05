@@ -204,22 +204,36 @@ async function run() {
             const newProduct = req.body
             const updateDoc = {
                 $set: {
-                    sellerName : newProduct.sellerName,
-                    sellerEmail : newProduct.sellerEmail,
-                    brand : newProduct.brand,
-                    ratings : parseInt(newProduct.ratings),
-                    price : parseInt(newProduct.price),
-                    img : newProduct.img,
-                    type : newProduct.type,
-                    productName : newProduct.productName,
-                    productDetails : newProduct.productDetails,
-                    isNew : "true",
-                    isApproved : "false"
+                    sellerName: newProduct.sellerName,
+                    sellerEmail: newProduct.sellerEmail,
+                    brand: newProduct.brand,
+                    ratings: parseInt(newProduct.ratings),
+                    price: parseInt(newProduct.price),
+                    img: newProduct.img,
+                    type: newProduct.type,
+                    productName: newProduct.productName,
+                    productDetails: newProduct.productDetails,
+                    isNew: "true",
+                    isApproved: "false"
                 },
             };
             const result = await productCollections.updateOne(filter, updateDoc);
             res.send(result)
         })
+
+        app.patch('/approvedProduct/:id', VerifyJwt, VerifyAdmin, async (req, res) => {
+            const id = req.params.id
+            const updateData = req.body
+            const filter = { _id: new ObjectId(id) }
+            const updateDoc = {
+                $set: {
+                    isApproved: updateData.isApproved
+                },
+            }
+            const result = await productCollections.updateOne(filter, updateDoc)
+            res.send(result)
+        })
+
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
