@@ -2,6 +2,7 @@ const express = require('express');
 const app = express()
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const stripe = require("stripe")(process.env.PAYMENT_KEY);
 require('dotenv').config()
 const port = process.env.PORT || 3000
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
@@ -84,9 +85,47 @@ async function run() {
         app.post('/jwt', (req, res) => {
             const user = req.body
             const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '30d' });
-            console.log({ token })
             res.send({ token })
         })
+
+        // Customer Panel ----------------------------------------------
+
+        app.post('/secetedProduct', async (req, res) => {
+            const data = req.body
+            const result = await selctedProductCollections.insertOne(data)
+            res.send(result)
+        })
+
+        app.get('/secetedProduct/:email', VerifyJwt, async (req, res) => {
+            const email = req.params.email
+            const result = await selctedProductCollections.find({ email: email }).toArray()
+            res.send(result)
+        })
+
+        app.delete('/deleteProduct/:id', VerifyJwt, async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: new ObjectId(id) }
+            const result = await selctedProductCollections.deleteOne(filter)
+            res.send(result)
+        })
+
+        //Payment
+
+        app.post("/create-payment-intent", VerifyJwt , async (req, res) => {
+            const { price } = req.body;
+            const amount = price * 100;
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: amount,
+                currency: "usd",
+                "payment_method_types": [
+                    "card"
+                ],
+            });
+
+            res.send({
+                clientSecret: paymentIntent.client_secret,
+            });
+        });
 
         // Verify Admin
 
@@ -111,6 +150,8 @@ async function run() {
             }
             next()
         }
+
+        // Admin Panel -------------------------------------------------
 
         // Check Admin
 
@@ -203,6 +244,8 @@ async function run() {
             const result = await productCollections.updateOne(filter, updateDoc)
             res.send(result)
         })
+
+        // Seller Panel ------------------------------------------------
 
         // Check Seller
 
