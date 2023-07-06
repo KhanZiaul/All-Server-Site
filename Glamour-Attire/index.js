@@ -98,7 +98,7 @@ async function run() {
 
         app.get('/secetedProduct/:email', VerifyJwt, async (req, res) => {
             const email = req.params.email
-            const result = await selctedProductCollections.find({ email: email }).toArray()
+            const result = await selctedProductCollections.find({ email: email, payment: "false" }).toArray()
             res.send(result)
         })
 
@@ -126,6 +126,22 @@ async function run() {
                 clientSecret: paymentIntent.client_secret,
             });
         });
+
+        app.patch('/payment/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = {_id : new ObjectId(id)}
+            const { payment, date, timestamp, TransactionId } = req.body
+            const updateDoc = {
+                $set: {
+                    payment : payment,
+                    date : date ,
+                    timestamp : timestamp ,
+                    TransactionId : TransactionId
+                },
+            };
+            const result = await selctedProductCollections.updateOne(filter, updateDoc);
+            res.send(result)
+        })
 
         // Verify Admin
 
