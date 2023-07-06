@@ -129,17 +129,23 @@ async function run() {
 
         app.patch('/payment/:id', async (req, res) => {
             const id = req.params.id
-            const filter = {_id : new ObjectId(id)}
+            const filter = { _id: new ObjectId(id) }
             const { payment, date, timestamp, TransactionId } = req.body
             const updateDoc = {
                 $set: {
-                    payment : payment,
-                    date : date ,
-                    timestamp : timestamp ,
-                    TransactionId : TransactionId
+                    payment: payment,
+                    date: date,
+                    timestamp: timestamp,
+                    TransactionId: TransactionId
                 },
             };
             const result = await selctedProductCollections.updateOne(filter, updateDoc);
+            res.send(result)
+        })
+
+        app.get('/paymentDoneProduct/:email', VerifyJwt, async (req, res) => {
+            const email = req.params.email
+            const result = await selctedProductCollections.find({ email: email, payment: "true" }).toArray()
             res.send(result)
         })
 
