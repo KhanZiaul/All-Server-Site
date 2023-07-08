@@ -45,6 +45,7 @@ async function run() {
         const productCollections = client.db("glamour-attire").collection("products")
         const userCollections = client.db("glamour-attire").collection("users")
         const selctedProductCollections = client.db("glamour-attire").collection("selectedProducts")
+        const blogCollections = client.db("glamour-attire").collection("blogs")
 
         app.get('/products', async (req, res) => {
             const result = await productCollections.find().toArray()
@@ -66,6 +67,11 @@ async function run() {
 
         app.get('/products/new', async (req, res) => {
             const result = await productCollections.find({ type: 'n' }).toArray()
+            res.send(result)
+        })
+
+        app.get('/blogs', async (req, res) => {
+            const result = await blogCollections.find().toArray()
             res.send(result)
         })
 
