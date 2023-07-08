@@ -75,6 +75,13 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/blogs/:id', async (req, res) => {
+            const id = req.params.id 
+            const query = {_id : new ObjectId(id)}
+            const result = await blogCollections.findOne(query)
+            res.send(result)
+        })
+
         app.post('/user/:email', async (req, res) => {
             const email = req.params.email
             const isExist = await userCollections.findOne({ email: email })
