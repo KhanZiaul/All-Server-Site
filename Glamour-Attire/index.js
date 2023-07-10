@@ -48,7 +48,11 @@ async function run() {
         const blogCollections = client.db("glamour-attire").collection("blogs")
 
         app.get('/products', async (req, res) => {
-            const result = await productCollections.find().toArray()
+            console.log(req.query)
+            const page = parseInt(req.query.page) || 0
+            const limit = parseInt(req.query.limit) || 5
+            const skip = page * limit;
+            const result = await productCollections.find().skip(skip).limit(limit).toArray()
             res.send(result)
         })
 
