@@ -57,11 +57,11 @@ async function run() {
         })
 
         
-        app.get('/allProductsCollections', async (req, res) => {
+        app.get('/allProductCollections', async (req, res) => {
             const result = await productCollections.find().toArray()
             res.send(result)
         })
-        
+
         app.get('/totalProducts', async (req, res) => {
             const result = await productCollections.estimatedDocumentCount()
             res.send({ totalProducts: result })
